@@ -6,12 +6,15 @@
  *      This file contains hardware definitions for the Bifrost ADCs
  *
  * Author:          Ray Sun
- * Last Updated:    02/20/2020
+ * Last Updated:    02/22/2020
  */
 
 
-#ifndef ADC_H
-#define ADC_H
+#ifndef HMD_ADC_H
+#define HMD_ADC_H
+
+
+// ########################### DEFINITIONS ####################################
 
 
 #define ADCSRA_INIT 0xE5    // 0110 0101 - Set ADC to free running mode
@@ -34,5 +37,25 @@
                             // -0-- ----    Comparator multiplexer disabled
                             // ---- -000    Free running mode
                             
+
+// ############################ DATA TYPES #####################################
+
+
+// Bifrost ADC peripherals
+typedef enum {
+    AUD_L = AUD_L_N;
+    AUD_R = AUD_R_N;
+    MIC = MIC_N;
+} HMD_ADC_PERPH;
+
+
+// ############################# FUNCTIONS #####################################
+
+
+void hmd_adc_init()             // Set up ADC
+void hmd_adc_source()           // Configure ADC to read one of the peripherals
+
+// Reads `n` samples of ADC into array at `readings`
+void hmd_adc_read(int *readings, uint16_t n);
                             
-#endif // ADC_H
+#endif // HMD_ADC_H
