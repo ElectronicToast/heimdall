@@ -115,24 +115,4 @@
 #define MIC_N           2       // ADC2
 
 
-#define AUD_L_ADMUX     0x40    // 0100 0000 - Use ADC0
-                                // 01-- ----    Voltage reference is AVcc
-                                // --0- ----    Right adjust ADC result 
-                                // ---- 0000    Select ADC0  
-#define AUD_R_ADMUX     0x41    // 0100 0001 - Use ADC1
-                                // 01-- ----    Voltage reference is AVcc
-                                // --0- ----    Right adjust ADC result 
-                                // ---- 0001    Select ADC1   
-#define MIC_ADMUX       0x42    // 0100 0010 - Use ADC2
-                                // 01-- ----    Voltage reference is AVcc
-                                // --0- ----    Right adjust ADC result 
-                                // ---- 0010    Select ADC2     
-                           
-                           
-#define AUD_L_DIDR      (1 << AUD_L_N)
-#define AUD_R_DIDR      (1 << AUD_R_N)
-#define MIC_DIDR        (1 << MIC_N)
-#define AUD_MIC_DDR     (AUD_L_DIDR | AUD_R_DIDR | MIC_DIDR)
-
-
 #endif // PINMAP_H

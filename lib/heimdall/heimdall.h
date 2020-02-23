@@ -4,7 +4,7 @@
  *
  * Description:
  *      Heimdall is an Arduino library for the Bifrost addressable RGB LED
- *      controller
+ *      controller.
  *
  * Author:          Ray Sun
  * Last Updated:    02/22/2020
