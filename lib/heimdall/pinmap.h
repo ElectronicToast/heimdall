@@ -75,7 +75,36 @@
 #define     BTN_4_DDR           DDRB
 #define     BTN_4_PINR          PINB
 #define     BTN_4_PIN_N         7                       // PD7
-#define     BTN_4_MSK           (1 << BTN_4_PORTN)
+#define     BTN_4_MSK           (1 << BTN_4_PIN_N)
+
+#define     BTN_123_RS_N        2       // Right shift to get 1 in low bit
+#define     BTN_4_RS_N          4       // Right shift to get 4 in bit 3
+
+// U = 1
+// L = 2
+// D = 3
+// R = 4
+#define     BTN_ULD_PORT        BTN_123_PORT
+#define     BTN_ULD_DDR         BTN_123_DDR
+#define     BTN_ULD_PINR        BTN_123_PINR
+#define     BTN_U_PIN_N         BTN_1_PIN_N
+#define     BTN_L_PIN_N         BTN_2_PIN_N
+#define     BTN_D_PIN_N         BTN_3_PIN_N
+#define     BTN_U_MSK           (1 << BTN_U_PIN_N)
+#define     BTN_L_MSK           (1 << BTN_L_PIN_N)
+#define     BTN_D_MSK           (1 << BTN_D_PIN_N)
+#define     BTN_ULD_MSK         (BTN_U_MSK | BTN_L_MSK | BTN_D_MSK)
+
+#define     BTN_R_PORT          BTN_4_PORT
+#define     BTN_R_DDR           BTN_4_DDR
+#define     BTN_R_PINR          BTN_4_PINR
+#define     BTN_R_PIN_N         BTN_4_PIN_N
+#define     BTN_R_MSK           (1 << BTN_R_PIN_N)
+
+#define     BTN_ULD_RS_N        2       // Right shift to get 1 in low bit
+#define     BTN_R_RS_N          4       // Right shift to get 4 in bit 3
+
+#define     BTN_CODE_MSK        0x0F    // Mask off high byte
 
 
 // ########################## ADC DEFINITIONS ##################################
