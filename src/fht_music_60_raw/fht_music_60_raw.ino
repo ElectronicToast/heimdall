@@ -1,15 +1,17 @@
 /*******************************************************************************
- * fht_music_15-.ino - 150 LED music visualizer with FHT
+ * fht_music_60_raw.ino - 60 LED music visualizer with FHT
  *      Author:         Ray Sun 
- *      Last Updated:   2/20/2020
+ *      Last Updated:   2/23/2020
  *
  * Description:
  *      This is a simple Arduino sketch for the Bifrost addressable RGB 
  *      LED controller that lights an individually addressable (WS8211 /  WS282b) 
- *      RGB LED strip of 150 LEDs in a rainbow spectrum, from red 
+ *      RGB LED strip of 60 LEDs in a rainbow spectrum, from red 
  *      (data in) to violet (data out), with the brightness of each individual 
  *      LED controlled by the frequency spectrum of audio input through an 
- *      audio jack
+ *      audio jack.
+ *      
+ *      'raw' - code does not use Heimdall library
  *
  * Interface:
  *      Input       Audio L input       Line level audio in
@@ -26,21 +28,19 @@
  *      5/25/2019       Ray Sun         Migrate to audio input.
  *      5/28/2019       Ray Sun         Perfect 150 LED setup.
  *      2/20/2020       Ray Sun         Adapt to run on Bifrost.
+ *      2/23/2020       Ray Sun         Adapt to run 60 LEDs.
  *
  * Validation:
- *      5/28/2019       Ray Sun         Validated.
+ *      2/23/2020       Ray Sun         Validated.
  ******************************************************************************/
  
 
 #include <avr/pgmspace.h>                   // For constants in SRAM
 #include <FastLED.h>
-//#include "../hal/pinmap.h"
-//#include "../hal/adc.h"
 
 
 // Pinout
 #define     PIN_IN_AUX          A0          // Audio ADC in 
-#define     PIN_OUT_STRIP       6           // Output to WS2811
 
 // System constants
 #define     N_LEDS              150         // Number of LEDs / pixels
@@ -59,8 +59,8 @@
 
 
 // Spectrum constants 
-#define     N_INTBINS           25          // Number of FHT bins used
-#define     N_INTERPOLATE       6           // Number of LEDs per FHT bin
+#define     N_INTBINS           20          // Number of FHT bins used
+#define     N_INTERPOLATE       3           // Number of LEDs per FHT bin
 #define     SPEC_START          2           // # bin to use as the start
                                             // of the spectrum for the LEDs
 
@@ -72,7 +72,7 @@
 
 // Hue constants 
 //      Compute with ~ H_TOP_VAL (255) / N_LEDS 
-#define     H_MUL               3           // Multiplicative factor
+#define     H_MUL               7           // Multiplicative factor
 #define     H_SR                1           // Rightshift factor
 
     
