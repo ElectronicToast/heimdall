@@ -15,6 +15,7 @@
 
 
 #include "pinmap.h"
+#include <stdint.h>
 
 
 // ########################### DEFINITIONS ####################################
@@ -37,7 +38,7 @@
 #define AUD_L_DIDR      (1 << AUD_L_N)
 #define AUD_R_DIDR      (1 << AUD_R_N)
 #define MIC_DIDR        (1 << MIC_N)
-#define AUD_MIC_DDR     (AUD_L_DIDR | AUD_R_DIDR | MIC_DIDR)
+#define AUD_MIC_DIDR    (AUD_L_DIDR | AUD_R_DIDR | MIC_DIDR)
 
 
 #define ADCSRA_INIT 0xE5    // 0110 0101 - Set ADC to free running mode
@@ -66,9 +67,9 @@
 
 // Bifrost ADC peripherals
 typedef enum {
-    AUD_L = AUD_L_N;
-    AUD_R = AUD_R_N;
-    MIC = MIC_N;
+    AUD_L = AUD_L_N,
+    AUD_R = AUD_R_N,
+    MIC = MIC_N
 } hmd_adc_perph;
 
 

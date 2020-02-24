@@ -15,7 +15,7 @@
 #define HEIMDALL_H
  
  
-#include "pinout.h"
+#include "pinmap.h"
 #include "adc.h"
 #include "button.h"
 

@@ -15,6 +15,9 @@
 #define HMD_BTN_H
 
 
+#include <stdint.h>
+
+
 void hmd_init_button();
 
 uint8_t hmd_read_button();      // Returns 4-bit button code, active high 
