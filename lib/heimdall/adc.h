@@ -49,11 +49,13 @@
                             // ---- 0---    Disable ADIF 
                             // ---- -101    Prescale divide by 32  
                             
-#define ADCSRA_RUN          (ADCSRA_INIT | 0xF0)
+#define ADCSRA_RUN          (ADCSRA_INIT | 0x80)
                             // 0--- ----    Enable ADC 
                             
 #define ADCSRA_ADIF_BIT     4
 #define ADCSRA_ADIF_MSK     (1 << ADCSRA_ADIF_BIT)
+#define ADCSRA_EN_BIT       7
+#define ADCSRA_EN_MSK       (1 << ADCSRA_EN_BIT)
 
                             
 #define ADCSRB_INIT 0x00    // 0000 0000 - Default
@@ -61,6 +63,15 @@
                             // -0-- ----    Comparator multiplexer disabled
                             // ---- -000    Free running mode
                             
+
+// Bit set functions
+#ifndef cbi
+#define cbi(sfr, bit) (_SFR_BYTE(sfr) &= ~_BV(bit))
+#endif
+#ifndef sbi
+#define sbi(sfr, bit) (_SFR_BYTE(sfr) |= _BV(bit))
+#endif 
+
 
 // ############################ DATA TYPES #####################################
 

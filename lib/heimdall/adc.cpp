@@ -48,7 +48,7 @@ void hmd_adc_read(int *readings, uint16_t n) {
         // Wait for ADC to be ready - ADIF bit is set
         while (!(ADCSRA & ADCSRA_ADIF_MSK)); 
         
-        ADCSRA = ADCSRA_RUN;    // Restart the ADC (start another conversion)
+        sbi(ADCSRA, ADCSRA_EN_BIT);     // Restart the ADC 
         
         byte m = ADCL;          // Get the ADC data word
         byte j = ADCH;
